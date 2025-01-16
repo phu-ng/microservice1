@@ -10,6 +10,6 @@ on:
 
 jobs:
   deploy:
-    uses: phu-ng/cicd-scripts/.github/workflows/build.yml@main
+    uses: phu-ng/cicd-scripts/.github/workflows/deploy.yml@main
     with:
       imageTag: ${{ github.event.inputs.imageTag }}
