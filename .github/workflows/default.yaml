@@ -86,6 +86,6 @@ on:
 
 jobs:
   call-reusable-workflow:
-    uses: phu-ng/cicd-scripts/.github/workflows/build.yaml@main
+    uses: phu-ng/cicd-scripts/.github/workflows/build.yml@main
     with:
       buildArgs: "custom-argument"
