@@ -10,5 +10,5 @@ permissions:
   contents: read
 
 jobs:
-  Build:
+  dev:
     uses: phu-ng/cicd-scripts/.github/workflows/build.yml@main

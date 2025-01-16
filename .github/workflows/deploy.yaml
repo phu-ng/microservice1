@@ -1,0 +1,15 @@
+name: Deploy on Demand
+
+on:
+  workflow_dispatch:  # This triggers the workflow manually from GitHub UI
+    inputs:
+      imageTag:
+        description: 'Docker image tag'
+        required: false
+        default: 'latest'
+
+jobs:
+  deploy:
+    uses: phu-ng/cicd-scripts/.github/workflows/build.yml@main
+    with:
+      imageTag: ${{ github.event.inputs.imageTag }}
