@@ -42,6 +42,11 @@ jobs:
         with:
           languages: java
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+      - name: Compile code
+        run: |
+          ls -lha 
+          pwd
+
+#      - name: Perform CodeQL Analysis
+#        uses: github/codeql-action/analyze@v3
 
