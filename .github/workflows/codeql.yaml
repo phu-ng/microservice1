@@ -34,18 +34,16 @@ jobs:
           path: ~/.m2/repository
           key: ${{ hashFiles('**/pom.xml') }}
 
-      - name: Compile code
-        run: ./mvnw compile -Dmaven.test.skip
+#      - name: Compile code
+#        run: ./mvnw compile -Dmaven.test.skip
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
-        with:
-          languages: java
+#      - name: Initialize CodeQL
+#        uses: github/codeql-action/init@v3
+#        with:
+#          languages: java
 
-      - name: Compile code
-        run: |
-          ls -lha 
-          pwd
+      - name: Check mvn
+        run: which mvn
 
 #      - name: Perform CodeQL Analysis
 #        uses: github/codeql-action/analyze@v3
