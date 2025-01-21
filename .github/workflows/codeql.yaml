@@ -1,0 +1,41 @@
+name: Code Quality
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    outputs:
+      sha-short: ${{ steps.set-short-sha.outputs.SHA_SHORT }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21' # Adjust this to the JDK version your project requires
+          distribution: 'temurin' # Choose the JDK distribution (temurin, zulu, etc.)
+          cache: 'maven'
+
+      - name: Cache local Maven repository
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ hashFiles('**/pom.xml') }}
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          languages: java
+
